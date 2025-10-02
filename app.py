@@ -18,13 +18,12 @@ st.set_page_config(
 left, right = st.columns([1, 3])
 with left:
     if os.path.exists(PAGE_ICON):
-        # Logo más grande, ocupa todo el ancho de la columna
-        st.image(PAGE_ICON, use_column_width=True)
+        # Logo más grande, adaptado al ancho de la columna
+        st.image(PAGE_ICON, use_container_width=True)
 with right:
     st.title(APP_TITLE)
     st.caption("Procesar resúmenes automáticos Maestro/Mastercard del Banco Credicoop")
 
-st.markdown('<hr style="margin:8px 0 20px 0;">', unsafe_allow_html=True)
 
 # Subida de archivo PDF
 pdf_file = st.file_uploader("📄 PDF de Maestro/Mastercard Credicoop", type=["pdf"])
