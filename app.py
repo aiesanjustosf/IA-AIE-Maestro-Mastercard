@@ -4,10 +4,11 @@ import streamlit as st
 from backend import extract_resumen_from_bytes, build_report_pdf, format_money
 
 APP_TITLE = "IA AIE - Control Tarjeta Maestro/Mastercard Débito/Crédito Credicoop"
-PAGE_ICON = "logo_aie.png"
+PAGE_ICON = "favicon.ico"   # usamos favicon limpio para la pestaña
+LOGO_FILE = "logo_aie.png"  # logo completo al lado del título
 MAX_MB    = 50
 
-# Configuración inicial de la página
+# Configuración inicial de la página con favicon
 st.set_page_config(
     page_title=APP_TITLE,
     page_icon=PAGE_ICON if os.path.exists(PAGE_ICON) else None,
@@ -17,9 +18,9 @@ st.set_page_config(
 # Encabezado con logo y título
 left, right = st.columns([1, 3])
 with left:
-    if os.path.exists(PAGE_ICON):
-        # Logo grande, adaptado al ancho de la columna
-        st.image(PAGE_ICON, use_container_width=True)
+    if os.path.exists(LOGO_FILE):
+        # Logo grande al costado
+        st.image(LOGO_FILE, use_container_width=True)
 with right:
     st.title(APP_TITLE)
     st.caption("Procesar resúmenes automáticos Maestro/Mastercard del Banco Credicoop")
@@ -67,5 +68,6 @@ if st.button("Procesar y generar informe") and pdf_file is not None:
                 os.remove(out_path)
             except OSError:
                 pass
+
 
 
